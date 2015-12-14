@@ -3,7 +3,7 @@ var httpProxy = require('http-proxy')
 var config    = require('../config')
 
 module.exports.createServer = function() {
-  return httpProxy.createServer({
+  var proxy = httpProxy.createServer({
     target: {
       host: 'localhost',
       port: config.httpPort
@@ -13,4 +13,8 @@ module.exports.createServer = function() {
       cert: fs.readFileSync(__dirname + '/certs/server.crt', 'utf8')
     }
   })
+  proxy.on('error', function() {
+    // do nothing
+  });
+  return proxy;
 }

@@ -59,7 +59,7 @@ module.exports = function(args) {
   )
 
   console.log(
-    "Application is now availaible at %s",
+    "Application is now available at %s",
     chalk.cyan('http://' + host + '.ka/')
   )
 }
